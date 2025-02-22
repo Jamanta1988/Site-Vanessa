@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Tempo Juntos</title>
+    <style>
+        /* CSS COMPLETO (MANTIDO) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(45deg, #8B0000, #FF0000);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        header::after {
+            content: '❤️';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 5s infinite;
+        }
+
+        h1 {
+            font-size: 3.2em;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contador {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .time-block {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #8B0000;
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .time-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px #FF0000;
+        }
+
+        .time-unit {
+            display: block;
+            font-size: 2.8em;
+            color: #FF4444;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255,68,68,0.3);
+        }
+
+        .time-label {
+            color: #ffffff;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 50px 0;
+        }
+
+        .foto {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .foto:hover {
+            border-color: #FF0000;
+            transform: scale(1.03);
+        }
+
+        .contato {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid #8B0000;
+            margin-top: 50px;
+        }
+
+        .contato-item {
+            display: inline-flex;
+            align-items: center;
+            margin: 15px;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .contato-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .contato-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.05; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            .time-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .galeria {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .time-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contato-item {
+                display: block;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Nosso Tempo Juntos</h1>
+            <div class="contador">
+                <div class="time-grid">
+                    <div class="time-block">
+                        <span class="time-unit" id="years">0</span>
+                        <span class="time-label">Anos</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-unit" id="months">0</span>
+                        <span class="time-label">Meses</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-unit" id="days">0</span>
+                        <span class="time-label">Dias</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-unit" id="hours">00</span>
+                        <span class="time-label">Horas</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-unit" id="minutes">00</span>
+                        <span class="time-label">Minutos</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-unit" id="seconds">00</span>
+                        <span class="time-label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="galeria">
+            <!-- FOTOS FIXAS - SUBSTITUA OS LINKS -->
+            <img class="foto" src="https://Jamanta1988.github.io/SiteVanessa/images/foto1.jpg">
+            <img class="foto" src="https://Jamanta1988.github.io/SiteVanessa/images/foto2.jpg">
+            <img class="foto" src="https://Jamanta1988.github.io/SiteVanessa/images/foto3.jpg">
+            <img class="foto" src="https://Jamanta1988.github.io/SiteVanessa/images/foto4.jpg">
+            <img class="foto" src="https://Jamanta1988.github.io/SiteVanessa/images/foto5.jpg">
+            <img class="foto" src="https://Jamanta1988.github.io/SiteVanessa/images/foto6.jpg">
+            <img class="foto" src="https://Jamanta1988.github.io/SiteVanessa/images/foto7.jpg">
+            <img class="foto" src="https://Jamanta1988.github.io/SiteVanessa/images/foto8.jpg">
+        </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        // CONTADOR FUNCIONAL
+        const startDate = new Date(2019, 11, 6, 0, 0, 0); // 6 de Novembro de 2019
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Atualizar a cada segundo
+        setInterval(updateCounter, 1000);
+        updateCounter(); // Chamada inicial
+    </script>
+</body>
+</html>
