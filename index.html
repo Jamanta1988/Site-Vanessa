@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Tempo Juntos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* CSS COMPLETO (MANTIDO) */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background: #000000;
+            background: #1a1a1a;
             color: #ffffff;
             min-height: 100vh;
             line-height: 1.6;
@@ -23,136 +23,197 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         header {
             text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(45deg, #8B0000, #FF0000);
+            padding: 80px 0;
+            background: linear-gradient(45deg, #2a0a0a, #1a1a1a);
             position: relative;
             overflow: hidden;
             margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 80, 80, 0.2);
+        }
+
+        /* Animação Funcional Garantida */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                rgba(255, 51, 102, 0.1) 0%,
+                transparent 50%,
+                rgba(255, 51, 102, 0.1) 100%
+            );
+            animation: romantic-flow 20s linear infinite;
+            z-index: 1;
+            transform: rotate(45deg);
         }
 
         header::after {
-            content: '❤️';
+            content: '❤';
             position: absolute;
-            font-size: 150px;
-            opacity: 0.1;
+            font-size: 200px;
+            opacity: 0.08;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: pulse 5s infinite;
+            animation: heartbeat 10s ease-in-out infinite;
+            color: #ff3366;
+            z-index: 2;
+            text-shadow: 0 0 50px rgba(255, 51, 102, 0.3);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { 
+                opacity: 0.08;
+                transform: translate(-50%, -50%) scale(0.98) rotate(-2deg); 
+            }
+            50% { 
+                opacity: 0.12;
+                transform: translate(-50%, -50%) scale(1.02) rotate(2deg); 
+            }
+        }
+
+        @keyframes romantic-flow {
+            0% { transform: rotate(45deg) translateX(-50%); }
+            100% { transform: rotate(45deg) translateX(50%); }
         }
 
         h1 {
-            font-size: 3.2em;
-            letter-spacing: 2px;
+            font-size: 3.5em;
+            letter-spacing: 1px;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 300;
             position: relative;
-            z-index: 1;
+            z-index: 3;
+            color: #ffffff;
+        }
+
+        h1 span {
+            font-weight: 600;
+            color: #ff3366;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
         }
 
         .contador {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(255, 255, 255, 0.08);
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 20px;
             margin: 40px 0;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 80, 80, 0.3);
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(255, 51, 102, 0.1);
         }
 
         .time-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 20px;
         }
 
         .time-block {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 10px;
-            border: 2px solid #8B0000;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
-            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(255, 51, 102, 0.15) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .time-block:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 20px #FF0000;
+            border-color: #ff3366;
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.2);
+        }
+
+        .time-block:hover::before {
+            opacity: 1;
         }
 
         .time-unit {
             display: block;
-            font-size: 2.8em;
-            color: #FF4444;
-            font-weight: 700;
-            margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(255,68,68,0.3);
+            font-size: 3em;
+            font-weight: 600;
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
         }
 
         .time-label {
-            color: #ffffff;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 0.9em;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.9;
+            font-weight: 300;
         }
 
         .galeria {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 50px 0;
+            gap: 20px;
+            margin: 60px 0;
         }
 
         .foto {
             width: 100%;
             height: 300px;
             object-fit: cover;
-            border-radius: 10px;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(255, 51, 102, 0.2);
         }
 
         .foto:hover {
-            border-color: #FF0000;
             transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.2);
+            border-color: #ff3366;
         }
 
-        .contato {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 2px solid #8B0000;
-            margin-top: 50px;
+        .foto::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(255, 51, 102, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 12px;
         }
 
-        .contato-item {
-            display: inline-flex;
-            align-items: center;
-            margin: 15px;
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .contato-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .contato-item img {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.05; transform: translate(-50%, -50%) scale(1.2); }
+        .foto:hover::after {
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
@@ -165,7 +226,7 @@
             }
             
             h1 {
-                font-size: 2.5em;
+                font-size: 2.8em;
             }
         }
 
@@ -174,9 +235,12 @@
                 grid-template-columns: 1fr;
             }
             
-            .contato-item {
-                display: block;
-                margin: 20px 0;
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-unit {
+                font-size: 2.5em;
             }
         }
     </style>
@@ -184,7 +248,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>Nosso Tempo Juntos</h1>
+            <h1>Nosso <span>Tempo</span> Juntos</h1>
             <div class="contador">
                 <div class="time-grid">
                     <div class="time-block">
@@ -227,14 +291,10 @@
             <img class="foto" src="https://Jamanta1988.github.io/Site-Vanessa/Prontas/foto7.jpg">
             <img class="foto" src="https://Jamanta1988.github.io/Site-Vanessa/Prontas/foto8.jpg">
         </div>
-
-
-        </div>
     </div>
 
     <script>
-        // CONTADOR FUNCIONAL
-        const startDate = new Date(2019, 10, 6, 0, 0, 0); // 6 de Novembro de 2019
+        const startDate = new Date(2019, 10, 6, 0, 0, 0);
 
         function updateCounter() {
             const now = new Date();
@@ -255,9 +315,8 @@
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
-        // Atualizar a cada segundo
         setInterval(updateCounter, 1000);
-        updateCounter(); // Chamada inicial
+        updateCounter();
     </script>
 </body>
 </html>
