@@ -32,11 +32,9 @@
             background: linear-gradient(45deg, #2a0a0a, #1a1a1a);
             position: relative;
             overflow: hidden;
-            margin-bottom: 30px;
             border-bottom: 1px solid rgba(255, 80, 80, 0.2);
         }
 
-        /* Animação Funcional Garantida */
         header::before {
             content: '';
             position: absolute;
@@ -130,28 +128,10 @@
             overflow: hidden;
         }
 
-        .time-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(255, 51, 102, 0.15) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
         .time-block:hover {
             transform: translateY(-5px);
             border-color: #ff3366;
             box-shadow: 0 0 25px rgba(255, 51, 102, 0.2);
-        }
-
-        .time-block:hover::before {
-            opacity: 1;
         }
 
         .time-unit {
@@ -162,7 +142,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
-            letter-spacing: -1px;
         }
 
         .time-label {
@@ -170,6 +149,23 @@
             font-size: 0.9em;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .declaracao {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .declaracao p {
+            font-size: 1.4em;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 300;
         }
 
@@ -186,8 +182,6 @@
             object-fit: cover;
             border-radius: 12px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            cursor: pointer;
             border: 1px solid rgba(255, 51, 102, 0.2);
         }
 
@@ -195,25 +189,6 @@
             transform: scale(1.03);
             box-shadow: 0 10px 30px rgba(255, 51, 102, 0.2);
             border-color: #ff3366;
-        }
-
-        .foto::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(255, 51, 102, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 12px;
-        }
-
-        .foto:hover::after {
-            opacity: 1;
         }
 
         @media (max-width: 768px) {
@@ -237,10 +212,6 @@
             
             .galeria {
                 grid-template-columns: 1fr;
-            }
-            
-            .time-unit {
-                font-size: 2.5em;
             }
         }
     </style>
@@ -281,6 +252,16 @@
     </header>
 
     <div class="container">
+        <div class="declaracao">
+            <p>
+                Seu olhar é o mapa que me orienta em noites sem rumo.<br>
+                Parceria é nosso código, fidelidade o alicerce.<br>
+                Escolho você nas tempestades e calmarias.<br>
+                O amor é construído, dia após dia.<br>
+                Aceita continuar nessa jornada?
+            </p>
+        </div>
+
         <div class="galeria">
             <img class="foto" src="https://Jamanta1988.github.io/Site-Vanessa/Prontas/foto1.jpg">
             <img class="foto" src="https://Jamanta1988.github.io/Site-Vanessa/Prontas/foto2.jpg">
